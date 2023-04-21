@@ -1,22 +1,26 @@
-let initialState = {
-  contactList: [],
-};
+/* eslint-disable default-case */
 
-function reducer(state = initialState, action) {
-  const { type, payload } = action;
+ 
+
+const initialState = {
+  contact: [],
+  keyword: "",
+};
+const contactReducer = (state = initialState, action) => {
+  let { type, payload } = action;
   switch (type) {
     case "ADD_CONTACT":
-      return {
-        ...state,
-        contactList: [
-          ...state.contactList,
-          { name:payload.name, number: payload.number },
-        ],
-      };
-
-    default:
-      return { ...state };
+      state.contact.push({
+        name: payload.name,
+        number: payload.number,
+      });
+      break;
+    case "SEARCH_BY_USERNAME":
+      state.keyword = payload.keyword;
+      break;
   }
-}
 
-export default reducer;
+  return { ...state };
+};
+
+export default contactReducer;
