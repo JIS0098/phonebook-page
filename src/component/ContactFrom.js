@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useDispatch } from 'react-redux';
 
 const ContactFrom = () => {
   const [name, setName] = useState("");
-  const { number, setNumber } = useState(0);
+  const [ number, setNumber ] = useState(0);
+  const dispatch = useDispatch();
+  const addContact =(event)=>{
+    event.preventDefault();
+    dispatch({type:"ADD_CONTACT", payload:{name,number}});
+  }
 
   return (
-    <div> <Form>
+    <div> <Form onSubmit={addContact}>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>이름</Form.Label>
         <Form.Control onChange={(event) => setName(event.target.value)} type="text" placeholder="이름을 입력해주세요" />

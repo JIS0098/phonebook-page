@@ -1,8 +1,10 @@
 import React from 'react'
-import { Button, Form, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 
-const ContactItem = () => {
+
+const ContactItem = ({item}) => {
+  
   return (
     <div className='profile'>
       <Row className='profile-area'>
@@ -11,10 +13,10 @@ const ContactItem = () => {
         </Col>
         <Col className='profile-title'  lg={10}> 
           <h4>
-            춘식이
+            {item.name}
           </h4>
           <p>
-              01012345678
+          {item.number}
           </p>
         </Col>
       </Row>
