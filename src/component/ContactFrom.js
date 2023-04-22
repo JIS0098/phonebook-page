@@ -9,8 +9,7 @@ const ContactFrom = () => {
   const addContact = (event) => {
     event.preventDefault();
     dispatch({ type: "ADD_CONTACT", payload: { name, number } });
-    setName("");
-    setNumber("");
+ 
   };
 
   return (
